@@ -26,22 +26,22 @@ class Song
   end
 
   def self.alphabetical
-
+    self.all.sort_by {|song| song.name}
   end
 
   def self.new_from_filename(file)
     _file = file.split(' - ')
     artist_name = _file[0]
     song_name = _file[1].split('.')[0]
-    puts self.new(song_name, artist_name)
-    binding.pry
+    self.new(song_name, artist_name)
+    # binding.pry
   end
   def self.create_from_filename(file)
     _file = file.split(' - ')
     artist_name = _file[0]
     song_name = _file[1].split('.')[0]
-    puts self.create(song_name, artist_name)
-    binding.pry
+    self.create(song_name, artist_name)
+    # binding.pry
   end
   def self.destroy_all()
     self.all.clear
@@ -51,7 +51,7 @@ class Song
 
   def initialize(name=nil, artist_name=nil)
     @name = name
-    @artist_name = name
+    @artist_name = artist_name
   end
   def self.all
     @@all
